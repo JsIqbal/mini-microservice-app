@@ -14,7 +14,7 @@ kubectl apply -f .
 
 ### Images of Blog Application
 
-`image of posts-client for Blog-application:` [https://hub.docker.com/repository/docker/jsiqbal/client]
+`image of posts-client for Blog-application:` [https://hub.docker.com/repository/docker/jsiqbal/client)
 
 `image of posts for Blog-application:` [https://hub.docker.com/repository/docker/jsiqbal/posts](https://hub.docker.com/repository/docker/jsiqbal/posts)
 
