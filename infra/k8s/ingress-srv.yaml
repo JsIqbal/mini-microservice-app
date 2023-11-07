@@ -38,3 +38,10 @@ spec:
                             name: client-srv
                             port:
                                 number: 3000
+                  - path: /posts/?(.*)/reaction
+                    pathType: Prefix
+                    backend:
+                        service:
+                            name: reaction-srv
+                            port:
+                                number: 3004

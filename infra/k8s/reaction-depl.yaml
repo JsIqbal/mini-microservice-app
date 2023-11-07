@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: reaction-depl
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: reaction
+    template:
+        metadata:
+            labels:
+                app: reaction
+        spec:
+            containers:
+                - name: reaction
+                  image: jsiqbal/reaction
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: reaction-srv
+spec:
+    selector:
+        app: reaction
+    ports:
+        - name: reaction
+          protocol: TCP
+          port: 3004
+          targetPort: 3004

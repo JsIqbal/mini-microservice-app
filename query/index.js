@@ -4,7 +4,6 @@ const cors = require("cors");
 const axios = require("axios");
 
 const app = express();
-
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -14,7 +13,7 @@ const handleEvent = (type, data) => {
     if (type === "PostCreated") {
         const { id, title } = data;
 
-        posts[id] = { id, title, comments: [] };
+        posts[id] = { id, title, comments: [], react: false };
     }
 
     if (type === "CommentCreated") {
@@ -50,13 +49,16 @@ app.post("/events", (req, res) => {
 });
 
 app.listen(4002, async () => {
-    console.log("listening on http://localhost:4002");
+    console.log("Listening on 4002");
+    try {
+        const res = await axios.get("http://event-bus-srv:4005/events");
 
-    const res = await axios.get("http://event-bus-srv:4005/events");
+        for (let event of res.data) {
+            console.log("Processing event:", event.type);
 
-    for (let event of res.data) {
-        console.log("processing event: " + event.type);
-
-        handleEvent(event.type, event.data);
+            handleEvent(event.type, event.data);
+        }
+    } catch (error) {
+        console.log(error.message);
     }
 });

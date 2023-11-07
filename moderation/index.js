@@ -22,6 +22,21 @@ app.post("/events", async (req, res) => {
             },
         });
     }
+    if (type === "ReactionCreated") {
+        const status = data.status;
+        const react = data.react;
+
+        await axios.post("http://event-bus-srv:4005/events", {
+            type: "ReactionModerated",
+            data: {
+                id: data.id,
+                postId: data.postId,
+                react,
+                status,
+                content: data.content,
+            },
+        });
+    }
     res.send({});
 });
 

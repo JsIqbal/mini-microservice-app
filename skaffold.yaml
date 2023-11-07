@@ -47,6 +47,14 @@ build:
                     dest: .
           docker:
               dockerfile: Dockerfile
+        - image: jsiqbal/reaction
+          context: reactions
+          sync:
+              manual:
+                  - src: "*.js"
+                    dest: .
+          docker:
+              dockerfile: Dockerfile
         - image: jsiqbal/query
           context: query
           sync:
