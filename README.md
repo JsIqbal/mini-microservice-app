@@ -12,6 +12,8 @@ A mini nodejs-react microservice blog. course by Stephen Grider
 skaffold dev
 ```
 
+*** The frontend doesn't have react hot reload that's why after every actions you need to refresh to see the updates. maybe in future will take care of it or you can also contribute ***
+
 -   follow this repo for more: [https://github.com/JsIqbal/Kubernetes-notes](https://github.com/JsIqbal/Kubernetes-notes)
 
 ### Images of Blog Application
