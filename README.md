@@ -6,10 +6,10 @@ A mini nodejs-react microservice blog. course by Stephen Grider
 
 ### To run the software:
 
--   create pods from deployment inside the infra/k8s directory executing:
+-   Run the software using skaffold development toolkit from the root directory:
 
 ```bash
-kubectl apply -f .
+skaffold dev
 ```
 
 -   follow this repo for more: [https://github.com/JsIqbal/Kubernetes-notes](https://github.com/JsIqbal/Kubernetes-notes)
