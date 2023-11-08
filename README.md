@@ -18,6 +18,8 @@ skaffold dev
 
 `image of posts-client for Blog-application:` [https://hub.docker.com/repository/docker/jsiqbal/client)
 
+`image of reactions for Blog-application:` [https://hub.docker.com/repository/docker/jsiqbal/reaction)
+
 `image of posts for Blog-application:` [https://hub.docker.com/repository/docker/jsiqbal/posts](https://hub.docker.com/repository/docker/jsiqbal/posts)
 
 `image of comments for Blog-application:` [https://hub.docker.com/repository/docker/jsiqbal/comments](https://hub.docker.com/repository/docker/jsiqbal/comments)
