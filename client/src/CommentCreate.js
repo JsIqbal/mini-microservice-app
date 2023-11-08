@@ -11,14 +11,6 @@ const CommentCreate = ({ postId }) => {
             content,
         });
 
-        const res = await axios.get(
-            `http://posts.com/posts/${postId}/reaction`
-        );
-        console.log(
-            "---------------------------testing reactions ----------------",
-            res
-        );
-
         setContent("");
     };
 

@@ -15,24 +15,21 @@ app.get("/posts/:id/reaction", (req, res) => {
 });
 
 app.post("/posts/:id/reaction", async (req, res) => {
+    const { id } = req.params;
+
     const reactionId = randomBytes(4).toString("hex");
+    const reaction = reactionByPostId[id] || { react: 0 };
 
-    const { content, status, react } = req.body;
+    reaction.react++;
 
-    const reaction = reactionByPostId[req.params.id] || [];
-
-    reaction.push({ id: reactionId, content, status, react });
-
-    reactionByPostId[req.params.id] = reaction;
+    reactionByPostId[id] = reaction;
 
     await axios.post("http://event-bus-srv:4005/events", {
         type: "ReactionCreated",
         data: {
             id: reactionId,
-            content,
-            postId: req.params.id,
-            status,
-            react,
+            postId: id,
+            react: reaction.react,
         },
     });
 
@@ -54,33 +51,3 @@ app.post("/events", async (req, res) => {
 app.listen(3004, () => {
     console.log("listening on http://localhost:3004");
 });
-
-// const express = require("express");
-// const bodyParser = require("body-parser");
-// const axios = require("axios");
-
-// const app = express();
-// app.use(bodyParser.json());
-
-// app.post("/events", async (req, res) => {
-//     const { type, data } = req.body;
-//     if (type === "ReactionCreated") {
-//         const { reactions, status, content, postId, id } = data;
-
-//         await axios.post("http://event-bus-srv:4005/events", {
-//             type: "ReactionModerated",
-//             data: {
-//                 id,
-//                 postId,
-//                 reactions,
-//                 status,
-//                 content,
-//             },
-//         });
-//     }
-//     res.send({});
-// });
-
-// app.listen(4004, () => {
-//     console.log("Listening on 4004");
-// });

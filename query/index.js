@@ -13,7 +13,7 @@ const handleEvent = (type, data) => {
     if (type === "PostCreated") {
         const { id, title } = data;
 
-        posts[id] = { id, title, comments: [], react: false };
+        posts[id] = { id, title, comments: [], react: 0 };
     }
 
     if (type === "CommentCreated") {
@@ -21,6 +21,13 @@ const handleEvent = (type, data) => {
 
         const post = posts[postId];
         post.comments.push({ id, content, status });
+    }
+
+    if (type === "ReactionCreated") {
+        const { id, postId, react } = data;
+
+        const post = posts[postId];
+        post.react = react;
     }
 
     if (type === "CommentUpdated") {
