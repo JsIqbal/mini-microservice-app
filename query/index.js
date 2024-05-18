@@ -11,9 +11,14 @@ const posts = {};
 
 const handleEvent = (type, data) => {
     if (type === "PostCreated") {
-        const { id, title } = data;
+        const { id, title, like } = data;
+        posts[id] = { id, title, comments: [], like: like };
+    }
 
-        posts[id] = { id, title, comments: [] };
+    if (type === "PostLikeCreated") {
+        let { id, title, like } = data;
+
+        posts[id] = { id, title, comments: [], like: parseInt(like + 1) };
     }
 
     if (type === "CommentCreated") {
