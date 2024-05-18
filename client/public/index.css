@@ -1,0 +1,17 @@
+.like-container {
+    display: flex;
+    align-items: center; /* Aligns items vertically in the middle */
+}
+
+.like-button {
+    background-color: #007bff; /* Example color */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-right: 10px; /* Adds some space between the button and the count */
+}
+
+.like-count {
+    font-size: 14px;
+}
