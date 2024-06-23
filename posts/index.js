@@ -59,5 +59,7 @@ app.post("/events", (req, res) => {
 });
 
 app.listen(4000, () => {
+    // make changes for image
+    console.log("v50");
     console.log("Listening on 4000");
 });
